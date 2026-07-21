@@ -1,0 +1,74 @@
+/* --- Variables d'identité PEVI --- */
+:root {
+    --bg-color: #0D335F;
+    --primary-blue: #5FA8D3;
+    --primary-yellow: #FADB5B;
+    --secondary-blue: #3A4999;
+    --secondary-red: #E52626;
+    --font-title: 'Swing King', cursive, sans-serif;
+    --font-body: 'Acumin', sans-serif;
+}
+
+/* --- Base & Reset --- */
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+    background-color: var(--bg-color);
+    color: #ffffff;
+    font-family: var(--font-body);
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    position: relative;
+    overflow-x: hidden;
+}
+
+h1 { font-family: var(--font-title); color: var(--primary-blue); margin-bottom: 1rem; }
+h2, h3 { font-family: var(--font-title); color: var(--primary-yellow); margin-bottom: 1rem; }
+a { text-decoration: none; color: var(--primary-yellow); transition: 0.3s; }
+a:hover { color: var(--primary-blue); }
+
+/* --- Header & Navigation --- */
+header { background-color: var(--bg-color); padding: 0 2rem; border-bottom: 4px solid var(--primary-yellow); }
+.header-top { display: flex; justify-content: space-between; align-items: center; }
+.logo { height: 10rem; }
+nav { display: flex; flex-wrap: wrap; gap: 1.5rem; justify-content: center; }
+nav a { font-weight: bold; font-size: 1.1rem; }
+
+/* --- Bannière Promo --- */
+.promo-banner { background-color: var(--secondary-red); color: white; text-align: center; padding: 0.5rem; font-weight: bold; }
+
+/* --- Contenu Principal --- */
+main { flex: 1; padding: 2rem; max-width: 1200px; margin: 0 auto; width: 100%; }
+
+/* --- Boutons --- */
+.btn { 
+    background-color: var(--primary-yellow); color: var(--bg-color); 
+    padding: 0.8rem 1.5rem; border: none; font-weight: bold; cursor: pointer; 
+    font-family: var(--font-body); font-size: 1rem; border-radius: 4px; 
+}
+.btn:hover { background-color: var(--primary-blue); color: white; }
+
+/* --- Formulaires & Tables --- */
+.form-group { margin-bottom: 1rem; }
+input, textarea { width: 100%; padding: 0.8rem; background: rgba(255,255,255,0.1); border: 1px solid var(--primary-blue); color: white; margin-top: 0.5rem; }
+table { width: 100%; border-collapse: collapse; margin-bottom: 1.5rem; }
+th, td { padding: 1rem; border-bottom: 1px solid var(--secondary-blue); text-align: left; }
+th { color: var(--primary-blue); }
+
+/* --- Grilles (Produits, Photos) --- */
+.product-card { color: var(--primary-yellow); background: var(--primary-blue); padding: 1.5rem; border-radius: 8px; text-align: center; margin-bottom: 1rem; }
+.product-card img { max-width: 100%; height: auto; margin-bottom: 1rem; }
+.product-title { font-weight: bold; font-size: 200%; }
+.gallery { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem; margin-bottom: 1.5rem; }
+.gallery img { width: 100%; border: 2px solid var(--primary-blue); }
+
+/* --- Onglets (Profil) --- */
+.tabs { display: flex; gap: 1rem; border-bottom: 2px solid var(--secondary-blue); margin-bottom: 1rem; }
+.tab-link { background: none; border: none; color: white; padding: 0.5rem 1rem; cursor: pointer; font-family: var(--font-body); }
+.tab-link.active { border-bottom: 3px solid var(--primary-yellow); color: var(--primary-yellow); }
+.tab-content { display: none; }
+
+/* --- Footer --- */
+footer { background-color: var(--bg-color); padding: 0.5rem; display: flex; justify-content: space-between; flex-wrap: wrap; gap: 1rem; border-top: 4px solid var(--primary-yellow); }
+.footer-links { display: flex; flex-direction: column; gap: 0.5rem; }

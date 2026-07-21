@@ -1,0 +1,32 @@
+<main>
+    <h1>Mon Espace PEVI</h1>
+    
+    <div class="tabs">
+        <button class="tab-link active" onclick="openTab(event, 'historique')">Historique des commandes</button>
+        <button class="tab-link" onclick="openTab(event, 'donnees')">Mes données</button>
+        <button class="tab-link" onclick="openTab(event, 'fidelite')">Ma fidélité</button>
+        <a href="index.html" class="tab-link" style="color: var(--secondary-red);">Déconnexion</a>
+    </div>
+
+    <div id="historique" class="tab-content" style="display: block;">
+        <h2>Historique de vos commandes</h2>
+        <p>Vous n'avez passé aucune commande pour le moment.</p>
+    </div>
+
+    <div id="donnees" class="tab-content">
+        <h2>Mes données personnelles</h2>
+        <form style="max-width: 400px;">
+            <input type="email" value="client@example.com" disabled>
+            <input type="password" placeholder="Nouveau mot de passe">
+            <button class="btn" style="margin-top: 1rem;">Mettre à jour</button>
+        </form>
+    </div>
+
+    <div id="fidelite" class="tab-content">
+        <h2>Programme de Fidélité</h2>
+        <div style="background: var(--primary-yellow); color: var(--bg-color); padding: 2rem; text-align: center; border-radius: 8px;">
+            <h3>Cubes cumulés : 0</h3>
+            <p>1€ dépensé = 1 Cube PEVI !</p>
+        </div>
+    </div>
+</main>

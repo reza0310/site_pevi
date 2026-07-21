@@ -1,0 +1,52 @@
+<main>
+    <h1>Validation du panier</h1>
+    
+    <table>
+        <thead>
+            <tr>
+                <th>Produit</th>
+                <th>Prix Unitaire</th>
+                <th>Quantité</th>
+                <th>Total</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Lorem Ipsum</td>
+                <td>15.00 €</td>
+                <td>1</td>
+                <td>15.00 €</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <div style="background: var(--secondary-blue); padding: 1rem; border-radius: 4px; margin-bottom: 2rem;">
+        <p>Sous-total : 15.00 €</p>
+        <p>TVA (20%) : 3.00 €</p>
+        <p>Frais de port : 10.00 €</p>
+        <h2 style="margin-top: 0.5rem;">Total à payer : 28.00 €</h2>
+    </div>
+
+    <form action="#">
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem;">
+            <div>
+                <h3>Adresse de Livraison</h3>
+                <input type="text" placeholder="Nom Complet" required>
+                <textarea placeholder="Adresse complète" rows="3" required></textarea>
+                <input type="text" placeholder="Code Postal" required>
+                <input type="text" placeholder="Ville" required>
+            </div>
+            <div>
+                <h3>Adresse de Facturation</h3>
+                <label style="font-size: 0.9em; color: var(--primary-blue);">
+                    <input type="checkbox" style="width:auto; display:inline;" checked> Identique à la livraison
+                </label>
+                <input type="text" placeholder="Nom Complet">
+                <textarea placeholder="Adresse complète" rows="3"></textarea>
+                <input type="text" placeholder="Code Postal">
+                <input type="text" placeholder="Ville">
+            </div>
+        </div>
+        <button type="submit" class="btn" style="margin-top: 2rem; width: 100%;">Procéder au paiement (28.00 €)</button>
+    </form>
+</main>
