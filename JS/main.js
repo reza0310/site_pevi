@@ -1,25 +1,19 @@
-// --- Gestion du Panier ---
-let cartCount = 0;
-
-function addToCart() {
-    cartCount++;
+function addToCart(item) {
+    let panier = JSON.parse(sessionStorage.getItem("panier"));
+    console.log(panier);
+    if (panier == null) {
+	console.log(1);
+	panier = [ item ];
+    } else {
+	console.log(2);
+	panier.push(item);
+    };
+    sessionStorage.setItem("panier", JSON.stringify(panier));
     const cartElement = document.getElementById('cart-count');
-    if (cartElement) cartElement.innerText = cartCount;
-    alert("Produit ajouté avec succès au panier !");
+    if (cartElement) cartElement.innerText = panier.length;
 }
+    
 
-// --- Gestion des onglets du Profil ---
-function openTab(evt, tabName) {
-    let tabContents = document.getElementsByClassName("tab-content");
-    for (let i = 0; i < tabContents.length; i++) {
-        tabContents[i].style.display = "none";
-    }
-    
-    let tabLinks = document.getElementsByClassName("tab-link");
-    for (let i = 0; i < tabLinks.length; i++) {
-        tabLinks[i].classList.remove("active");
-    }
-    
-    document.getElementById(tabName).style.display = "block";
-    evt.currentTarget.classList.add("active");
-}
+let panier = JSON.parse(sessionStorage.getItem("panier"));
+const cartElement = document.getElementById('cart-count');
+if (cartElement) cartElement.innerText = panier.length;

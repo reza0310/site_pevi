@@ -63,12 +63,6 @@ th { color: var(--primary-blue); }
 .gallery { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem; margin-bottom: 1.5rem; }
 .gallery img { width: 100%; border: 2px solid var(--primary-blue); }
 
-/* --- Onglets (Profil) --- */
-.tabs { display: flex; gap: 1rem; border-bottom: 2px solid var(--secondary-blue); margin-bottom: 1rem; }
-.tab-link { background: none; border: none; color: white; padding: 0.5rem 1rem; cursor: pointer; font-family: var(--font-body); }
-.tab-link.active { border-bottom: 3px solid var(--primary-yellow); color: var(--primary-yellow); }
-.tab-content { display: none; }
-
 /* --- Footer --- */
 footer { background-color: var(--bg-color); padding: 0.5rem; display: flex; justify-content: space-between; flex-wrap: wrap; gap: 1rem; border-top: 4px solid var(--primary-yellow); }
-.footer-links { display: flex; flex-direction: column; gap: 0.5rem; }
+.footer-links { display: flex; gap: 0.5rem; }
