@@ -1,0 +1,8 @@
+{
+    "name": "Elementalis, version française",
+    "price": 15,
+    "delivery_france": {"nosig": 5.49, "sig": 8.79, "eco": null},
+    "delivery_france_plus": {"nosig": 12.02, "sig": 15.32, "eco": 8.41},
+    "delivery_uk": {"nosig": null, "sig": 18.99, "eco": null},
+    "delivery_eu": {"nosig": null, "sig": 14.99, "eco": null}
+}

@@ -1,6 +1,6 @@
 <main>
     <h1>Validation du panier</h1>
-    
+
     <table>
         <thead>
             <tr>
@@ -10,13 +10,7 @@
                 <th>Total</th>
             </tr>
         </thead>
-        <tbody>
-            <tr>
-                <td>Lorem Ipsum</td>
-                <td>15.00 €</td>
-                <td>1</td>
-                <td>15.00 €</td>
-            </tr>
+        <tbody id="liste">
         </tbody>
     </table>
 
@@ -30,7 +24,14 @@
     <form action="#">
         <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem;">
             <div>
-                <h3>Adresse de Livraison</h3>
+                <h3>Adresse de Livraison (informations demandées par la poste)</h3>
+
+                <select name="cars" id="cars">
+                    <option value="volvo">Volvo</option>
+                    <option value="saab">Saab</option>
+                    <option value="opel">Opel</option>
+                    <option value="audi">Audi</option>
+                </select>
                 <input type="text" placeholder="Nom Complet" required>
                 <textarea placeholder="Adresse complète" rows="3" required></textarea>
                 <input type="text" placeholder="Code Postal" required>
@@ -39,14 +40,18 @@
             <div>
                 <h3>Adresse de Facturation</h3>
                 <label style="font-size: 0.9em; color: var(--primary-blue);">
-                    <input type="checkbox" style="width:auto; display:inline;" checked> Identique à la livraison
+                    <input id="same" type="checkbox" style="width:auto; display:inline;" checked> Identique à la livraison
                 </label>
+                <div id="af">
                 <input type="text" placeholder="Nom Complet">
                 <textarea placeholder="Adresse complète" rows="3"></textarea>
                 <input type="text" placeholder="Code Postal">
                 <input type="text" placeholder="Ville">
+                </div>
             </div>
         </div>
         <button type="submit" class="btn" style="margin-top: 2rem; width: 100%;">Procéder au paiement (28.00 €)</button>
     </form>
+
+    <script src="/JS/panier.js" defer></script>
 </main>

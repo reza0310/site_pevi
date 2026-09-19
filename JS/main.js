@@ -1,19 +1,26 @@
 function addToCart(item) {
     let panier = JSON.parse(sessionStorage.getItem("panier"));
     console.log(panier);
-    if (panier == null) {
-	console.log(1);
-	panier = [ item ];
+    if (panier != null && panier[item] != null) {
+	panier[item] = panier[item] + 1;
     } else {
-	console.log(2);
-	panier.push(item);
+	if (panier == null) panier = {};
+	panier[item] = 1;
     };
     sessionStorage.setItem("panier", JSON.stringify(panier));
     const cartElement = document.getElementById('cart-count');
-    if (cartElement) cartElement.innerText = panier.length;
+    let taille = 0;
+    for (const [key, value] of Object.entries(panier)) {
+        taille += value;
+    }
+    if (cartElement) cartElement.innerText = taille;
 }
     
 
 let panier = JSON.parse(sessionStorage.getItem("panier"));
 const cartElement = document.getElementById('cart-count');
-if (cartElement) cartElement.innerText = panier.length;
+let taille = 0;
+for (const [key, value] of Object.entries(panier)) {
+    taille += value;
+}
+if (cartElement) cartElement.innerText = taille;
