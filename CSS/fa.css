@@ -62,3 +62,7 @@
 .fa-envelope {
   --fa: "\f0e0";
 }
+
+.fa-xmark {
+  --fa: "\f00d";
+}
