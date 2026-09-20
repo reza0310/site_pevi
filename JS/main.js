@@ -39,7 +39,33 @@ function init() {
         element.addEventListener("click", close_banner);
     });
 
+    init_mobile_menu();
     init_basket();
+}
+
+function init_mobile_menu() {
+    const menuButton = document.querySelector(".menu-toggle");
+    const navigation = document.getElementById("main-navigation");
+    if (!menuButton || !navigation) return;
+
+    const closeMenu = () => {
+        menuButton.setAttribute("aria-expanded", "false");
+        navigation.classList.remove("is-open");
+    };
+
+    menuButton.addEventListener("click", () => {
+        const isOpen = menuButton.getAttribute("aria-expanded") === "true";
+        menuButton.setAttribute("aria-expanded", String(!isOpen));
+        navigation.classList.toggle("is-open", !isOpen);
+    });
+
+    navigation.querySelectorAll("a").forEach(link => {
+        link.addEventListener("click", closeMenu);
+    });
+
+    document.addEventListener("keydown", event => {
+        if (event.key === "Escape") closeMenu();
+    });
 }
 
 // Only run init function if DOM is fully loaded
