@@ -1,42 +1,81 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
+    <!-- ====== Text encoding format ====== -->
     <meta charset="UTF-8">
+
+    <!-- ====== Mobile device and highdpi compatibility ====== -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <title>PEVI | Vente de jeux et accessoires</title>
+
+    <!-- ====== Metas informations ====== -->
     <meta name="description" content="Découvrez les produits PEVI. Achetez notre célèbre Elementalis, nos accessoires et nos jeux de société en ligne !">
-    <link rel="icon" type="image/x-icon" href="/IMAGES/logo.png">
+
+    <!-- ====== Favicons ====== -->
+    <!-- Standard sizes for desktop and mobile browsers -->
+    <link rel="icon" type="image/png" sizes="16x16" href="/IMAGES/icon/favicon-16x16.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/IMAGES/icon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="48x48" href="/IMAGES/icon/favicon-48x48.png">
+
+    <!-- Android / Web App Manifest standard size -->
+    <link rel="icon" type="image/png" sizes="192x192" href="/IMAGES/icon/favicon-192x192.png">
+
+    <!-- Apple Touch Icon for iOS home screens (Safari prefers 180x180) -->
+    <link rel="apple-touch-icon" sizes="180x180" href="/IMAGES/icon/apple-touch-icon.png">
+
+    <!-- Universal Legacy Fallback (No sizes attribute needed) -->
+    <link rel="shortcut icon" type="image/x-icon" href="/IMAGES/icon/favicon.ico">
+
+    <!-- ====== Stylsheets and fonts ====== -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
     <link rel="stylesheet" href="/CSS/style.css">
+
+    <!-- ====== Scripts ====== -->
     <script src="/JS/main.js" defer></script>
 </head>
 <body>
-    <div class="promo-banner">Le système de paiement est actuellement désactivé.</div>
+    <div class="banner">
+        <span class="banner-text">Le système de paiement est actuellement désactivé.</span>
+        <button class="banner-close"><i class="fa-solid fa-xmark" aria-hidden="true"></i></button>
+    </div>
 
     <header>
         <div class="header-top">
-            <img src="/IMAGES/logo.png" alt="Logo PEVI" class="logo">
+            <img src="/IMAGES/logo.webp" alt="Logo PEVI" class="logo">
             <nav>
-                <a href="/">Accueil</a>
-                <a href="/jeux">Jeux</a>
-                <a href="/accessoires">Accessoires</a>
-                <a href="/histoire">Histoire</a>
-                <a href="/blog">Blog</a>
-                <a href="/partenaires">Magasins partenaires</a>
-                <a href="/contact">Nous contacter</a>
+                <a href="/"><i class="fa-solid fa-house nav-icon" aria-hidden="true"></i>Accueil</a>
+                <span class="vsep"></span>
+                <a href="/jeux"><i class="fa-solid fa-dice nav-icon" aria-hidden="true"></i>Jeux</a>
+                <span class="vsep"></span>
+                <a href="/accessoires"><i class="fa-solid fa-puzzle-piece nav-icon" aria-hidden="true"></i>Accessoires</a>
+                <span class="vsep"></span>
+                <a href="/histoire"><i class="fa-solid fa-book-open nav-icon" aria-hidden="true"></i>Histoire</a>
+                <span class="vsep"></span>
+                <a href="/blog"><i class="fa-solid fa-newspaper nav-icon" aria-hidden="true"></i>Blog</a>
+                <span class="vsep"></span>
+                <a href="/partenaires"><i class="fa-solid fa-store nav-icon" aria-hidden="true"></i>Magasins partenaires</a>
+                <span class="vsep"></span>
+                <a href="/contact"><i class="fa-solid fa-envelope nav-icon" aria-hidden="true"></i>Nous contacter</a>
             </nav>
-            <div class="user-actions">
-                <a href="/panier">Mon panier (<span id="cart-count">0</span>)</a>
+            <div class="basket">
+                <a href="/panier"><i class="fa-solid fa-cart-shopping nav-icon" aria-hidden="true"></i>Panier (<span id="cart-count">0</span>)</a>
             </div>
         </div>
     </header>
+
     %php%
+
     <footer>
-	<div class="footer-links">
-	    <a href="/legal/confidentialite">Politique de confidentialité</a> | 
-	    <a href="/legal/mentions">Mentions légales</a> | 
-	    <a href="/legal/cgu">Conditions générales d'utilisation (CGU)</a> | 
-	    <a href="/legal/cgv">Conditions générales de vente (CGV)</a>
-	</div>
+        <div class="footer-links">
+            <a href="/legal/confidentialite">Politique de confidentialité</a>
+            <span class="vsep"></span>
+            <a href="/legal/mentions">Mentions légales</a>
+            <span class="vsep"></span>
+            <a href="/legal/cgu">Conditions générales d'utilisation (CGU)</a>
+            <span class="vsep"></span>
+            <a href="/legal/cgv">Conditions générales de vente (CGV)</a>
+        </div>
         <div class="footer-text">
             <p>&copy; 2026 PEVI - Tous droits réservés.</p>
         </div>
