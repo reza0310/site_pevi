@@ -1,0 +1,64 @@
+@font-face {
+  font-family: "Font Awesome 7 Free";
+  font-style: normal;
+  font-weight: 900;
+  font-display: swap;
+  src: url("/FONTS/fa/fa-solid-900.woff2");
+}
+
+.fa-solid {
+  --fa-family: 'Font Awesome 7 Free';
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  display: var(--fa-display, inline-block);
+  font-family: var(--fa-family);
+  font-feature-settings: normal;
+  font-style: normal;
+  font-synthesis: none;
+  font-variant: normal;
+  font-weight: var(--fa-style, 900);
+  line-height: 1;
+  text-align: center;
+  text-rendering: auto;
+  width: var(--fa-width, 1.25em);
+}
+
+.fa-solid::before {
+  content: var(--fa)/"";
+}
+
+.fa-bars {
+  --fa: "\f0c9";
+}
+
+.fa-house {
+  --fa: "\f015";
+}
+
+.fa-dice {
+  --fa: "\f522";
+}
+
+.fa-puzzle-piece {
+  --fa: "\f12e";
+}
+
+.fa-book-open {
+  --fa: "\f518";
+}
+
+.fa-newspaper {
+  --fa: "\f1ea";
+}
+
+.fa-store {
+  --fa: "\f54e";
+}
+
+.fa-cart-shopping {
+  --fa: "\f07a";
+}
+
+.fa-envelope {
+  --fa: "\f0e0";
+}

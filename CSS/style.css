@@ -39,6 +39,7 @@
          url('/FONTS/kalam/Kalam-Regular.woff') format('woff'),
          url('/FONTS/kalam/Kalam-Regular.ttf') format('truetype');
     font-display: swap;
+    size-adjust: 75%; /* Used to reduce CLS */
     /*font-weight: 400;*/
 }
 
@@ -48,6 +49,7 @@
          url('/FONTS/quicksand/Quicksand-Medium.woff') format('woff'),
          url('/FONTS/quicksand/Quicksand-Medium.ttf') format('truetype');
     font-display: swap;
+    size-adjust: 100%; /* Used to reduce CLS */
     /*font-weight: 500;*/
 }
 
