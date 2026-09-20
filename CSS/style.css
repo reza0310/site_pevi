@@ -28,38 +28,27 @@
     --banner-bg-color: color-mix(in srgb, var(--secondary-red), black 10%);
     --banner-fg-color: #FFFFFF;
 
-    /*--font-title: 'Swing King', cursive, sans-serif;*/
     --font-title: 'title', cursive, sans-serif;
-
     --font-body: 'body', sans-serif;
 }
 
 /* --- Fonts --- */
 @font-face {
     font-family: title;
-    /*src: url("/FONTS/dafont/Le Cristal de Lune.ttf");*/
-    /*src: url("/FONTS/gluten/Gluten-Light.woff2");*/
-
-    /*
-    src: url('/FONTS/fontshare/Kalam_Complete/Fonts/WEB/fonts/Kalam-Variable.woff2') format('woff2'),
-        url('/FONTS/fontshare/Kalam_Complete/Fonts/WEB/fonts/Kalam-Variable.woff') format('woff'),
-        url('/FONTS/fontshare/Kalam_Complete/Fonts/WEB/fonts/Kalam-Variable.ttf') format('truetype');
-    font-weight: 300 700;
-    */
-
-    src: url('/FONTS/fontshare/Kalam_Complete/Fonts/WEB/fonts/Kalam-Regular.woff2') format('woff2'),
-        url('/FONTS/fontshare/Kalam_Complete/Fonts/WEB/fonts/Kalam-Regular.woff') format('woff'),
-        url('/FONTS/fontshare/Kalam_Complete/Fonts/WEB/fonts/Kalam-Regular.ttf') format('truetype');
+    src: url('/FONTS/kalam/Kalam-Regular.woff2') format('woff2'),
+         url('/FONTS/kalam/Kalam-Regular.woff') format('woff'),
+         url('/FONTS/kalam/Kalam-Regular.ttf') format('truetype');
     font-weight: 400;
-
     font-display: swap;
-    /*font-style: normal;*/
 }
 
 @font-face {
     font-family: body;
-    /*src: url("/FONTS/dafont/ZTNature/ZTNature-Medium.ttf");*/
-    src: url("/FONTS/fontshare/Quicksand_Complete/Fonts/WEB/fonts/Quicksand-Medium.woff2");
+    src: url('/FONTS/quicksand/Quicksand-Medium.woff2') format('woff2'),
+         url('/FONTS/quicksand/Quicksand-Medium.woff') format('woff'),
+         url('/FONTS/quicksand/Quicksand-Medium.ttf') format('truetype');
+    font-weight: 500;
+    font-display: swap;
 }
 
 /* --- Base & Reset --- */
@@ -159,15 +148,16 @@ header {
     background-color: rgba(255, 255, 255, 0.15);
 }
 
-nav {
+#main-navigation {
     display: flex;
     flex: 1 1 auto;
+    flex-direction: row;
     flex-wrap: wrap;
     gap: 0.15rem 0.5rem;
     justify-content: center;
 }
 
-nav a {
+#main-navigation a {
     font-weight: bold;
     /* font-size: 1.1rem; */
     padding: 0.75rem;
@@ -228,7 +218,9 @@ main {
 .btn {
     background-color: var(--primary-yellow);
     color: var(--fg-color);
-    padding: 0.8rem 1.5rem;
+    display: inline-block;
+    margin: 0.25em;
+    padding: 0.8em 1.5em;
     border: none;
     font-weight: bold;
     cursor: pointer;
@@ -355,11 +347,11 @@ footer a:hover {
 }
 
 /* --- Basket --- */
-.basket-price {
+.info-block {
     background: var(--primary-blue);
     padding: 1rem;
     border-radius: 4px;
-    margin-bottom: 2rem;
+    margin-bottom: 2em;
 }
 
 @media (max-width: 760px) {
@@ -377,7 +369,8 @@ footer a:hover {
         display: flex;
     }
 
-    nav {
+    #main-navigation {
+        flex-direction: column;
         flex-basis: 100%;
         order: 3;
         display: none;
@@ -385,11 +378,11 @@ footer a:hover {
         padding-top: 0.5rem;
     }
 
-    nav.is-open {
+    #main-navigation.is-open {
         display: flex;
     }
 
-    nav a {
+    #main-navigation a {
         padding: 0.6rem 0.45rem;
     }
 

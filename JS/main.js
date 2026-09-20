@@ -34,15 +34,6 @@ function close_banner() {
     });;
 }
 
-function init() {
-    Array.from(document.getElementsByClassName("banner-close")).forEach(element => {
-        element.addEventListener("click", close_banner);
-    });
-
-    init_mobile_menu();
-    init_basket();
-}
-
 function init_mobile_menu() {
     const menuButton = document.querySelector(".menu-toggle");
     const navigation = document.getElementById("main-navigation");
@@ -66,6 +57,15 @@ function init_mobile_menu() {
     document.addEventListener("keydown", event => {
         if (event.key === "Escape") closeMenu();
     });
+}
+
+function init() {
+    Array.from(document.getElementsByClassName("banner-close")).forEach(element => {
+        element.addEventListener("click", close_banner);
+    });
+
+    init_mobile_menu();
+    init_basket();
 }
 
 // Only run init function if DOM is fully loaded

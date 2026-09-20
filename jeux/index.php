@@ -1,4 +1,11 @@
 <?php
 include "../INCLUDES/utils.php";
-echo(addheader(file_get_contents("page.html"), "uno"));
+
+$cards = "";
+$cards .= file_get_contents("cards/elementalis.html");
+
+$page = file_get_contents("page.html");
+$page = str_replace("%cards%", $cards, $page);
+
+echo(addheader($page, "uno"));
 ?>
