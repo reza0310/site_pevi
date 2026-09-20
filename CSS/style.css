@@ -38,8 +38,8 @@
     src: url('/FONTS/kalam/Kalam-Regular.woff2') format('woff2'),
          url('/FONTS/kalam/Kalam-Regular.woff') format('woff'),
          url('/FONTS/kalam/Kalam-Regular.ttf') format('truetype');
-    font-weight: 400;
     font-display: swap;
+    /*font-weight: 400;*/
 }
 
 @font-face {
@@ -47,8 +47,8 @@
     src: url('/FONTS/quicksand/Quicksand-Medium.woff2') format('woff2'),
          url('/FONTS/quicksand/Quicksand-Medium.woff') format('woff'),
          url('/FONTS/quicksand/Quicksand-Medium.ttf') format('truetype');
-    font-weight: 500;
     font-display: swap;
+    /*font-weight: 500;*/
 }
 
 /* --- Base & Reset --- */
@@ -76,15 +76,21 @@ body {
     overflow-x: hidden;
 }
 
+/*
 img {
     max-width: 100%;
     height: auto;
 }
+*/
 
 h1 {
     color: var(--title-fg-color);
     font-family: var(--font-title);
     font-style: oblique -10deg;
+}
+
+h1, h2, h3 {
+    margin-bottom: 0.5em;
 }
 
 a {
@@ -283,7 +289,6 @@ th {
 .product-card img {
     max-width: 100%;
     height: auto;
-    margin-bottom: 1rem;
     border-radius: 1rem;
     border: 2px solid white;
 }
@@ -313,14 +318,40 @@ footer {
     color: var(--footer-fg-color);
     padding: 0.5rem;
     display: flex;
-    justify-content: space-between;
-    flex-wrap: wrap;
+    flex-direction: row;
     gap: 1rem;
     border-top: 4px solid var(--primary-yellow);
 }
 
 footer a:hover {
     color: var(--primary-blue);
+}
+
+.footer>.vsep {
+    flex: 0 0 auto;
+}
+
+.footer-left {
+    flex: 0 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.footer-left>a {
+    margin: 0.5rem;
+    padding: 0.5rem;
+    border: 1px solid rgba(255, 255, 255, 0.45);
+}
+
+.footer-right {
+    flex: 1 1 auto;
+    display: flex;
+    flex-direction: row;
+    gap: 1rem;
+    flex-wrap: wrap;
+    align-items: center;
+    /*justify-content: space-between;*/
 }
 
 .footer-links {
