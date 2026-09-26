@@ -2,6 +2,5 @@
 mdp.php
 config.php
 
-# Huge artist files (git LFS not yet setup)
-IMAGES/work
-FONTS/work
+# Git LFS not yet setup
+assets/
