@@ -1,6 +1,7 @@
 <?php
 
 require_once __DIR__ . '/db.php';
+require_once __DIR__ . '/philibert_api.php';
 
 class ProductManager
 {
@@ -9,6 +10,14 @@ class ProductManager
     public function __construct(Database $db)
     {
         $this->pdo = $db->get_pdo();
+    }
+
+    public static function product_id_to_string(int $product_id): string {
+        return 'C' . strtoupper(dechex($product_id)) . 'C';
+    }
+
+    public static function product_id_from_string(string $str): int {
+        return hexdec(substr($str, 1, strlen() - 2));
     }
 
     /**
@@ -53,10 +62,20 @@ class ProductManager
         $sql = "UPDATE products SET stock = stock + :delta WHERE id = :id";
         $stmt = $this->pdo->prepare($sql);
 
-        return $stmt->execute([
+        $result = $stmt->execute([
             'delta' => $delta,
             'id'    => $product_id,
         ]);
+
+        if (!$result) {
+            return false;
+        }
+
+        // Update Philibert stock
+        $new_stock = $this->get_product_stock($product_id);
+        PhilibertAPI::update_stock($product_id, $new_stock);
+
+        return true;
     }
 
     /**

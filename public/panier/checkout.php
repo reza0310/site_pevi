@@ -1,5 +1,7 @@
 <?php
 
+exit(404); // FIXME: Temporary disable this page because it's not yet finished
+
 $ROOT = dirname(__DIR__, 2);
 
 include $ROOT.'includes/http.php';
@@ -68,7 +70,7 @@ foreach ($products as $product) {
 
 // Create order in database
 
-$order_manager->create_order(
+$order_id = $order_manager->create_order(
     // TODO
 );
 
@@ -80,7 +82,7 @@ $systempay_order = [
     'vads_action_mode' => 'INTERACTIVE',
 
     // Montant de la transaction exprimé en son unité indivisible (en cents pour l'Euro).
-    vads_amount,
+    'vads_amount' => '',
 
     // Paramètre facultatif. Permet de spécifier les langues disponibles sur la page de paiement
     // (affichage des drapeaux sur la page de paiement).
@@ -157,12 +159,12 @@ $systempay_order = [
     // Paramètre facultatif. Numéro de commande qui pourra être rappelé dans l'e-
     // mail de confirmation de paiement adressé au client. Champ au format
     // alphanumérique. Seul le caractère spécial « - » est autorisé.
-    vads_order_id,
+    'vads_order_id' => ProductManager::product_id_to_string($order_id),
 
     // Champs libres facultatifs pouvant par exemple servir à stocker un résumé de la
     // commande.
     //vads_order_info2, vads_order_info3
-    vads_order_info => '', // TODO: Mettre les produits acheté ici
+    'vads_order_info' => '', // TODO: Mettre les produits acheté ici
 
     // Ce paramètre est obligatoire et doit être valorisé à PAYMENT.
     'vads_page_action' => 'PAYMENT',
@@ -331,6 +333,6 @@ $systempay_order['signature'] = SystemPay::sign($systempay_order, SYSTEMPAY_SIGN
 // Reply
 
 header('Content-Type: application/json; charset=utf-8');
-echo json_encode($systempay_order);
+echo(json_encode($systempay_order));
 
 ?>

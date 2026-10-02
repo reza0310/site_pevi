@@ -9,14 +9,16 @@ async function init() {
     let panier = JSON.parse(sessionStorage.getItem("panier"));
     let total = 0;
     let liste_texte = "";
-    for (const [key, value] of Object.entries(panier)) {
-        const response = await fetch("/DATA/"+key.toString()+".json");
-        if (!response.ok) {
-            throw new Error(`Response status: ${response.status}`);
+    if (panier !== null) {
+        for (const [key, value] of Object.entries(panier)) {
+            const response = await fetch("/DATA/"+key.toString()+".json");
+            if (!response.ok) {
+                throw new Error(`Response status: ${response.status}`);
+            }
+            const result = await response.json();
+            liste_texte += "<tr><td>" + result.name + "</td><td>" + result.price + "€</td><td>" + value + "</td><td>" + result.price * value + "€</td></tr>"
+            console.log(result);
         }
-        const result = await response.json();
-        liste_texte += "<tr><td>" + result.name + "</td><td>" + result.price + "€</td><td>" + value + "</td><td>" + result.price * value + "€</td></tr>"
-        console.log(result);
     }
     document.getElementById("liste").innerHTML = liste_texte;
     up_addresse();
@@ -75,9 +77,9 @@ function systempay_bank_result_code_to_string(code) {
 }
 
 
-async function checkout() {
-    let a = 'https://systempay.cyberpluspaiement.com/vads-payment/';
-}
+// async function checkout() {
+//     let a = 'https://systempay.cyberpluspaiement.com/vads-payment/';
+// }
 
 
 // Only run init function if DOM is fully loaded

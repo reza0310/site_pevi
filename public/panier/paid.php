@@ -1,5 +1,7 @@
 <?php
 
+exit(404); // FIXME: Temporary disable this page because it's not yet finished
+
 $ROOT = dirname(__DIR__, 2);
 
 include $ROOT.'includes/http.php';
