@@ -260,13 +260,16 @@ table {
     margin-bottom: 1.5rem;
 }
 
-th, td {
+#liste td {
     padding: 1rem;
     border-bottom: 1px solid var(--secondary-blue);
     text-align: left;
 }
 
 th {
+    padding: 1rem;
+    border-bottom: 1px solid var(--secondary-blue);
+    text-align: left;
     color: var(--title-fg-color);
 }
 
@@ -385,6 +388,13 @@ footer a:hover {
     padding: 1rem;
     border-radius: 4px;
     margin-bottom: 2em;
+}
+
+.info-block img {
+    position: relative;
+    top: 0;
+    right: -12%;
+    height: 21em;
 }
 
 @media (max-width: 760px) {
