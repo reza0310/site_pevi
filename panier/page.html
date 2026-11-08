@@ -15,10 +15,18 @@
     </table>
 
     <div class="info-block">
-        <p>Sous-total : 15.00 €</p>
-        <p>TVA (20%) : 3.00 €</p>
-        <p>Frais de port : 10.00 €</p>
-        <h2 style="margin-top: 0.5rem;">Total à payer : 28.00 €</h2>
+        <table>
+        <tbody>
+        <tr>
+            <td>
+                <p>Sous-total : <span id="sous-total"></span> €</p>
+                <p>Frais de port : <span id="port"></span> €</p>
+                <h2 style="margin-top: 0.5rem;">Total à payer : <span id="total"></span> €</h2>
+            </td>
+            <td><button onclick="empty_panier()">Vider le panier</button></td>
+        </tr>
+        </tbody>
+        </table>
     </div>
 
     <form action="#">
@@ -47,38 +55,37 @@
                 <input autocomplete="family-name" maxlength="50" name="lastName" type="text" required>
                 <label for="country-addressForm">Pays / Territoire *</label>
                 <br>
-                <select name="country-addressForm" autocomplete="country-name" required>
-                    <option disabled="">-Sélectionner une option-</option>
+                <select id="select" name="country-addressForm" autocomplete="country-name" required>
+                    <option value="FR">France - Métropole</option>
+                    <option value="GP">France - Guadeloupe</option>
+                    <option value="GF">France - Guyane française</option>
+                    <option value="BL">France - Saint Barthélemy</option>
+                    <option value="MF">France - Saint Martin (partie française)</option>
+                    <option value="PM">France - Saint Pierre et Miquelon</option>
+                    <option value="MQ">France - Martinique</option>
+                    <option value="YT">France - Mayotte</option>
+                    <option value="RE">France - Réunion</option>
+                    <option value="TF">France - Terres australes françaises</option>
                     <option value="DE">Allemagne</option>
                     <option value="DE-BU">Allemagne - Busingen</option>
                     <option value="DE-HE">Allemagne - Helgoland</option>
-                    <option value="AD">Andorre</option>
+                    <option value="GB">Royaume-Uni</option>
                     <option value="BE">Belgique</option>
+                    <option value="AD">Andorre</option>
                     <option value="ES">Espagne</option>
                     <option value="ES-CE">Espagne - Ceuta</option>
                     <option value="ES-BA">Espagne - Iles Baléares</option>
                     <option value="ES-CA">Espagne - Îles Canaries</option>
                     <option value="ES-ME">Espagne - Melilla</option>
-                    <option value="FR">France - Métropole</option>
-                    <option value="GP">France - Guadeloupe</option>
-                    <option value="GF">France - Guyane française</option>
                     <option value="IE">Irlande</option>
                     <option value="IT">Italie</option>
                     <option value="IT-CI">Italie - Camppione d'Italia</option>
                     <option value="IT-LI">Italie - Livigno</option>
                     <option value="LU">Luxembourg</option>
-                    <option value="MQ">France - Martinique</option>
-                    <option value="YT">France - Mayotte</option>
                     <option value="MC">Monaco</option>
                     <option value="NL">Pays-Bas</option>
                     <option value="PT">Portugal</option>
-                    <option value="RE">France - Réunion</option>
-                    <option value="GB">Royaume-Uni</option>
-                    <option value="BL">France - Saint Barthélemy</option>
-                    <option value="MF">France - Saint Martin (partie française)</option>
-                    <option value="PM">France - Saint Pierre et Miquelon</option>
                     <option value="CH">Suisse</option>
-                    <option value="TF">France - Terres australes françaises</option>
                 </select>
                 <br>
                 <label for="zipCode-addressForm">Code postal *</label>
