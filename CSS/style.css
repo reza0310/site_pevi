@@ -393,8 +393,8 @@ footer a:hover {
 .info-block img {
     position: relative;
     top: 0;
-    right: -12%;
-    height: 21em;
+    right: 12%;
+    height: 18em;
 }
 
 @media (max-width: 760px) {

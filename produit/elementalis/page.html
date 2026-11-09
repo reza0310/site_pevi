@@ -1,15 +1,16 @@
 <main>
-    <h1>Elementalis</h1>
+<h1 id="title">Elementalis</h1>
     <div class="gallery">
-        <img src="/IMAGES/elementalis_1.jpg" alt="Photo 1" height="200">
-        <img src="/IMAGES/elementalis_2.jpg" alt="Photo 2" height="200">
-        <img src="/IMAGES/elementalis_3.jpg" alt="Photo 3" height="200">
+        <img id="pic1" src="/" alt="Photo 1" height="200">
+        <img id="pic2" src="/" alt="Photo 2" height="200">
+        <img id="pic3" src="/" alt="Photo 3" height="200">
     </div>
 
     <div class="info-block">
         <table class="tg">
         <tr>
             <td>
+                <h2>Informations sur le produit</h2>
                 <p><strong>Auteur :</strong> Geoffroy "reza0310" Du Mosé Houël Du Prey De La Ruffinière</p>
                 <p><strong>Illustratrice :</strong> Louise Chamussy</p>
                 <p><strong>Nombre de joueurs :</strong> 2 à 4 et plus</p>
@@ -17,23 +18,56 @@
                 <p><strong>Type de jeu :</strong> simple, rapide et tous publiques</p>
                 <p><strong>Aspect principal :</strong> social</p>
                 <p><strong>Date de mise en vente :</strong> 08/11/2026</p>
-                <p><strong>Notice en pdf :</strong> <a href="/produit/elementalis/notice.pdf">cliquez ici</a></p>
+                <p><strong>Notice en pdf :</strong> <a href="/produit/elementalis/notice.pdf" target="_blank" rel="noopener noreferrer">cliquez ici</a></p>
             </td>
             <td>
+                <h2>Roue du prix</h2>
                 <img src="/IMAGES/roue_elementalis.png" alt="La roue des prix"/>
             </td>
         </tr>
+        <tr>
+            <td>
+                <h2>Description du produit</h2>
+                <p>Annoncez vos coups, lancez vos sorts, affrontez-vous et découvrez la vérité !</p>
+                <p>Dans ce jeu de bluff inspiré du pierre, feuille, ciseaux, annoncer vos coups en avance vous rend plus vulnérable mais... gagnez malgré tout et vous en serez fortement récompensé !</p>
+                <p>Entre bluff et réflexion, la meilleure des stratégie dans ce jeu reste le simple fait de connaître ses adversaires mieux qu'ils ne le pensent.</p>
+                <p>Expérimenté ? Les trois options de jeu fournies vous permettent d'en changer quelques règles afin de le rendre toujours plus palpitant, un poil plus complexe et surtout d'augmenter drastiquement la réjouabilité !</p>
+                <p>Cette boîte contient le matériel pour 4 joueurs : 44 cartes + 1 notice.</p>
+            </td>
+            <td>
+                <h2>Fabriquants</h2>
+                <strong><u>Boîtes :</u></strong> <a href="https://www.printeurope.fr/" target="_blank" rel="noopener noreferrer">PrintEurope (🇫🇷)</a><br>
+                <strong><u>Cartes :</u></strong> <a href="https://www.printeurope.fr/" target="_blank" rel="noopener noreferrer">PrintEurope (🇫🇷)</a><br>
+                <strong><u>Notices :</u></strong> <a href="https://www.bureau-vallee.fr/" target="_blank" rel="noopener noreferrer">BureauVallée (🇫🇷)</a> & <a href="/" target="_blank" rel="noopener noreferrer">PEVI (🇫🇷)</a><br>
+            </td>
+        </tr>
         </table>
-
-
-	<br>
-        <h2>Description du produit</h2>
-        <p>Annoncez vos coups, lancez vos sorts, affrontez-vous et découvrez la vérité !</p>
-        <p>Dans ce jeu de bluff inspiré du pierre, feuille, ciseaux, annoncer vos coups en avance vous rend plus vulnérable mais... gagnez malgré tout et vous en serez fortement récompensé !</p>
-        <p>Entre bluff et réflexion, la meilleure des stratégie dans ce jeu reste le simple fait de connaître ses adversaires mieux qu'ils ne le pensent.</p>
-        <p>Expérimenté ? Les trois options de jeu fournies vous permettent d'en changer quelques règles afin de le rendre toujours plus palpitant, un poil plus complexe et surtout d'augmenter drastiquement la réjouabilité !</p>
-        <p>Cette boîte contient le matériel pour 4 joueurs : 44 cartes + 1 notice.</p>
-        <h2 style="margin-top: 1rem;">15,00 €</h2>
+        <br>
+        <h2 id="prix" style="margin-top: 1rem;">-99€</h2>
         <button class="btn" onclick="addToCart(3770044154003)">Ajouter au panier</button>
     </div>
 </main>
+<script>
+    async function loadRemoteData() {
+        try {
+            const response = await fetch("/DATA/3770044154003.json");
+            if (!response.ok) {
+                throw new Error(`HTTP error! Status: ${response.status}`);
+            }
+            const data = await response.json();
+
+            document.getElementById("title").innerHTML = data["name"];
+            document.getElementById("pic1").src = "/IMAGES/" + data["sub_pics"][0];
+            document.getElementById("pic2").src = "/IMAGES/" + data["sub_pics"][1];
+            document.getElementById("pic3").src = "/IMAGES/" + data["sub_pics"][2];
+            document.getElementById("prix").innerHTML = data["price"] + "€";
+
+        } catch (error) {
+            // Handle any errors (e.g., network failure, bad URL)
+            console.error('Failed to load JSON:', error);
+        }
+    }
+
+    // Run the function when the script loads
+    loadRemoteData();
+</script>
