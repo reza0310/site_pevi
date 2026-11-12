@@ -15,67 +15,79 @@ function update_port() {
     let port = 0;
     if (sel.value == "FR") {
         if (soustotal < 20) {
-            port = 1;
+            // 1 jeu
+            // 122g
+            port = 5.49+0.61+0.1; // Port + carton + papier bulle / mise en boîte
         } else if (soustotal < 50) {
-            port = 1;
+            // 3 jeux
+            // 455g
+            port = 7.59+2.29+3*0.1; // Port + carton + papier bulle / mise en boîte
         } else if (soustotal < 100) {
-            port = 1;
+            // 6 jeux
+            // 740g
+            port = 9.29+2.29+6*0.1; // Port + carton + papier bulle / mise en boîte
         } else if (soustotal < 150) {
-            port = 1;
+            // 9 jeux
+            // 1025g
+            port = 11.19+2.29+9*0.1; // Port + carton + papier bulle / mise en boîte
         } else if (soustotal < 200) {
-            port = 1;
+            // 12 jeux
+            // 1310g
+            port = 11.19+2.29+12*0.1; // Port + carton + papier bulle / mise en boîte
         } else if (soustotal < 250) {
-            port = 1;
+            // 16 jeux
+            // 1690g
+            port = 11.19+2.29+16*0.1; // Port + carton + papier bulle / mise en boîte
         } else {
-            port = 9999;
+            port = 0;
         }
     } else if (sel.value == "GP" || sel.value == "GF" || sel.value == "BL" || sel.value == "MF" || sel.value == "PM" || sel.value == "MQ" || sel.value == "YT" || sel.value == "RE" || sel.value == "TF") {
         if (soustotal < 20) {
-            port = 2;
+            port = 12.02+0.61+0.1;
         } else if (soustotal < 50) {
-            port = 2;
+            port = 12.02+2.29+3*0.1;
         } else if (soustotal < 100) {
-            port = 2;
+            port = 19+2.29+6*0.1;
         } else if (soustotal < 150) {
-            port = 2;
+            port = 25.89+2.29+9*0.1;
         } else if (soustotal < 200) {
-            port = 2;
+            port = 25.89+2.29+12*0.1;
         } else if (soustotal < 250) {
-            port = 2;
+            port = 25.89+2.29+16*0.1;
         } else {
-            port = 9999;
+            port = 0;
         }
     } else if (sel.value == "GB") {
         if (soustotal < 20) {
-            port = 3;
+            port = 18.99+0.61+0.1;
         } else if (soustotal < 50) {
-            port = 3;
+            port = 18.99+2.29+3*0.1;
         } else if (soustotal < 100) {
-            port = 3;
+            port = 23.39+2.29+6*0.1;
         } else if (soustotal < 150) {
-            port = 3;
+            port = 26.19+2.29+9*0.1;
         } else if (soustotal < 200) {
-            port = 3;
+            port = 26.19+2.29+12*0.1;
         } else if (soustotal < 250) {
-            port = 3;
+            port = 26.19+2.29+16*0.1;
         } else {
-            port = 9999;
+            port = 0;
         }
     } else {
         if (soustotal < 20) {
-            port = 4;
+            port = 14.99+0.61+0.1;
         } else if (soustotal < 50) {
-            port = 4;
+            port = 14.99+2.29+3*0.1;
         } else if (soustotal < 100) {
-            port = 4;
+            port = 19.39+2.29+6*0.1;
         } else if (soustotal < 150) {
-            port = 4;
+            port = 22.19+2.29+9*0.1;
         } else if (soustotal < 200) {
-            port = 4;
+            port = 22.19+2.29+12*0.1;
         } else if (soustotal < 250) {
-            port = 4;
+            port = 22.19+2.29+16*0.1;
         } else {
-            port = 9999;
+            port = 0;
         }
     }
     document.getElementById("port").innerHTML = port;
