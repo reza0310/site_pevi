@@ -397,6 +397,10 @@ footer a:hover {
     height: 18em;
 }
 
+.partenaire {
+    width: 35%;
+}
+
 @media (max-width: 760px) {
     .header-top {
         flex-wrap: wrap;
