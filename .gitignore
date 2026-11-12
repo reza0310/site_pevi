@@ -4,3 +4,6 @@ config.php
 
 # Git LFS not yet setup
 assets/
+
+# Record or HTTP requests
+requests/
