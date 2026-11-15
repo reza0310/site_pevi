@@ -18,18 +18,20 @@ const DEFAULT_MONETARY_UNIT = 'EUR';
 
 
 class OrderStatus {
-    const PENDING = 'pending';
+    const WAITING = 'waiting';
     const ACCEPTED = 'accepted';
     const REFUSED = 'refused';
+    const PENDING = 'pending';
     const CANCELLED = 'cancelled';
     const SHIPPED = 'shipped';
     const REFUNDED = 'refunded';
     const DELIVERED = 'delivered';
 
     const ALL = [
-        PENDING,
+        WAITING,
         ACCEPTED,
         REFUSED,
+        PENDING,
         CANCELLED,
         SHIPPED,
         REFUNDED,
@@ -40,10 +42,14 @@ class OrderStatus {
 
 class ProductState {
     const ACTIVE = 'active';
+    const OUT_OF_STOCK = 'out_of_stock';
+    const UNAVAILABLE = 'unavailable';
     const DISCONTINUED = 'discontinued';
 
     const ALL = [
         ACTIVE,
+        OUT_OF_STOCK,
+        UNAVAILABLE,
         DISCONTINUED,
     ];
 }

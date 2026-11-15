@@ -1,0 +1,52 @@
+.total-price-lbl {
+    margin-top: 0.5rem;
+}
+
+.checkout-form-main {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+}
+
+.civil-status-choice-lbl {
+    text-align: end;
+    width: 40%;
+    text-align: end; width: 40%;
+}
+
+.shipping-billing-same-lbl {
+    font-size: 0.9em;
+    color: var(--primary-blue);
+}
+
+.shipping-billing-same-lbl input {
+    width: auto;
+    display: inline;
+}
+
+.checkout-form-submit-btn {
+    margin-top: 2rem;
+    width: 100%;
+}
+
+.summary-addr-block {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 1.5rem;
+    margin: 1.5rem 0;
+}
+
+.summary-products-block {
+    width: 100%;
+    margin-bottom: 1rem;
+}
+
+.summary-price-block {
+    text-align: right;
+    margin-top: 1rem;
+}
+
+.summary-confirm-btn {
+    margin-top: 1.5rem;
+    width: 100%;
+}

@@ -59,6 +59,33 @@ function init_mobile_menu() {
     });
 }
 
+// ======= Popups =======
+
+class Popup {
+    constructor(element) {
+        this.popup_elem = element;
+        this.scroll_elem = document.body;
+        this.backdrop_elem = document.getElementById('popups-backdrop');
+
+        this.backdrop_elem.style.zIndex = 98;
+        this.popup_elem.style.zIndex = 99;
+    }
+
+    show() {
+        this.popup_elem.style.display = "block";
+        this.backdrop_elem.style.display = "block";
+        this.scroll_elem.style.overflow = "hidden";
+    }
+
+    hide() {
+        this.popup_elem.style.display = "none";
+        this.backdrop_elem.style.display = "none";
+        this.scroll_elem.style.overflow = "";
+    }
+}
+
+// ======= Global init =======
+
 function init() {
     Array.from(document.getElementsByClassName("banner-close")).forEach(element => {
         element.addEventListener("click", close_banner);

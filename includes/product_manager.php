@@ -12,22 +12,11 @@ class ProductManager
         $this->pdo = $db->get_pdo();
     }
 
-    public static function product_id_to_string(int $product_id): string {
-        return 'C' . strtoupper(dechex($product_id)) . 'C';
-    }
-
-    public static function product_id_from_string(string $str): int {
-        return hexdec(substr($str, 1, strlen() - 2));
-    }
-
     /**
      * Creates a new product and return its id.
      */
     public function create_product(
-        string $slug,
-        string $title,
-        string $description,
-        string $thumbnail,
+        int $id,
         string $price_unit,
         int $price_amount,
         int $stock
@@ -36,21 +25,18 @@ class ProductManager
             throw new InvalidArgumentException("Unité monétaire invalide : {$price_unit}");
         }
 
-        $sql = "INSERT INTO products (slug, title, description, thumbnail, price_unit, price_amount, stock, state)
-                VALUES (:slug, :title, :description, :thumbnail, :price_unit, :price_amount, :stock, 'active')";
+        $sql = "INSERT INTO products (id, price_unit, price_amount, stock, state)
+                VALUES (:id, :price_unit, :price_amount, :stock, 'active')";
 
         $stmt = $this->pdo->prepare($sql);
         $stmt->execute([
-            'slug'         => $slug,
-            'title'        => $title,
-            'description'  => $description,
-            'thumbnail'    => $thumbnail,
+            'id'           => $id,
             'price_unit'   => strtolower($price_unit),
             'price_amount' => $price_amount,
             'stock'        => $stock,
         ]);
 
-        return (int) $this->pdo->lastInsertId();
+        return $id;
     }
 
     /**
@@ -83,19 +69,23 @@ class ProductManager
      */
     public function get_product_stock(int $product_id): int
     {
-        $sql = "SELECT stock FROM products WHERE id = :id";
+        $sql = "SELECT stock, state FROM products WHERE id = :id";
 
         $stmt = $this->pdo->prepare($sql);
         $stmt->execute(['id' => $product_id]);
 
         $product = $stmt->fetch();
 
+        if ($product['state'] == ProductState::OUT_OF_STOCK) {
+            return 0;
+        }
         return $product['stock'];
     }
 
     /**
      * Updates product details dynamically based on provided parameters.
      */
+    /*
     public function update_product_details(
         int $product_id,
         ?string $slug = null,
@@ -162,10 +152,12 @@ class ProductManager
 
         return $stmt->execute($params);
     }
+    */
 
     /**
      * Retrieves a product by its id.
      */
+    /*
     public function get_product_details(int $product_id): ?array
     {
         $sql = "SELECT id, slug, title, description, thumbnail, price_unit, price_amount, stock, state, created_at
@@ -179,4 +171,5 @@ class ProductManager
 
         return $product ?: null;
     }
+    */
 }

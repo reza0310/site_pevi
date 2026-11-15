@@ -1,3 +1,5 @@
+<link rel="stylesheet" href="/CSS/panier.css">
+
 <main>
     <h1>Validation du panier</h1>
 
@@ -10,8 +12,7 @@
                 <th>Total</th>
             </tr>
         </thead>
-        <tbody id="liste">
-        </tbody>
+        <tbody id="products-list"></tbody>
     </table>
 
     <div class="info-block">
@@ -21,41 +22,62 @@
             <td>
                 <p>Sous-total : <span id="sous-total"></span> €</p>
                 <p>Frais de port : <span id="port"></span> €</p>
-                <h2 style="margin-top: 0.5rem;">Total à payer : <span id="total"></span> €</h2>
+                <h2 class="total-price-lbl">Total à payer : <span id="total"></span> €</h2>
             </td>
-            <td><button onclick="empty_panier()">Vider le panier</button></td>
+            <td><button id="empty-basket-btn" class="btn">Vider le panier</button></td>
         </tr>
         </tbody>
         </table>
     </div>
 
     <form action="#">
-        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem;">
+        <div class="checkout-form-main">
+            <div layout="horizontal">
+            <label for="special-code">J'utilise un code :</label>
+            <input name="special-code" type="text" required>
+            </div>
+            <button type="submit" class="btn checkout-form-submit-btn">Régler la commande avec ce code</button>
+        </div>
+    </form>
+    <br><br><br>
+
+    <!-- ======== Formulaire principale ======== -->
+
+    <form id="checkout-form">
+        <div class="checkout-form-main">
+
+            <!-- ======== Address de livraison ======== -->
+
             <div>
                 <h3>Adresse de Livraison (informations demandées par la poste)</h3>
+
                 <div layout="horizontal">
                     <fieldset>
                         <legend>Civilité *</legend>
-                        <table><tbody>
-                        <tr>
-                            <td style="text-align: end; width: 40%;"><label for="sexaddressForm-FEMALE"><span>Madame</span></label></td>
-                            <td><input type="radio" name="sex" value="FEMALE" checked></td>
-                        </tr>
-                        <tr>
-                            <td style="text-align: end; width: 40%;"><label for="sexaddressForm-MALE"><span>Monsieur</span></label></td>
-                            <td><input type="radio" name="sex" value="MALE"></td>
-                        </tr>
-                        </tbody>
+                        <table>
+                            <tbody>
+                                <tr>
+                                    <td class="civil-status-choice-lbl"><label for="shipping-civil-status"><span>Madame</span></label></td>
+                                    <td><input type="radio" name="shipping-civil-status" value="FEMALE" checked></td>
+                                </tr>
+                                <tr>
+                                    <td class="civil-status-choice-lbl"><label for="shipping-civil-status"><span>Monsieur</span></label></td>
+                                    <td><input type="radio" name="shipping-civil-status" value="MALE"></td>
+                                </tr>
+                            </tbody>
                         </table>
                     </fieldset>
                 </div>
-                <label for="firstName">Prénom *</label>
-                <input autocomplete="given-name" maxlength="25" name="firstName" type="text" required>
-                <label for="lastName">Nom *</label>
-                <input autocomplete="family-name" maxlength="50" name="lastName" type="text" required>
-                <label for="country-addressForm">Pays / Territoire *</label>
+
+                <label for="shipping-given-name">Prénom *</label>
+                <input id="shipping-given-name" autocomplete="given-name" maxlength="25" name="shipping-given-name" type="text" required>
+
+                <label for="shipping-family-name">Nom *</label>
+                <input id="shipping-family-name" autocomplete="family-name" maxlength="50" name="shipping-family-name" type="text" required>
+
+                <label for="shipping-country">Pays / Territoire *</label>
                 <br>
-                <select id="select" name="country-addressForm" autocomplete="country-name" required>
+                <select id="shipping-country" name="shipping-country" autocomplete="country-name" required>
                     <option value="FR">France - Métropole</option>
                     <option value="GP">France - Guadeloupe</option>
                     <option value="GF">France - Guyane française</option>
@@ -88,92 +110,192 @@
                     <option value="CH">Suisse</option>
                 </select>
                 <br>
-                <label for="zipCode-addressForm">Code postal *</label>
-                <input autocomplete="postal-code" maxlength="5" name="zipCode-addressForm" type="text" required>
-                <label for="city-addressForm">Ville *</label>
-                <input autocomplete="address-level2" maxlength="45" name="city-addressForm" type="text" required>
-                <label for="streetName-addressForm">Numéro et libellé de voie *</label>
-                <input autocomplete="address-line1" maxlength="60" name="streetName-addressForm" type="text">
+
+                <label for="shipping-postal-code">Code postal *</label>
+                <input id="shipping-postal-code" autocomplete="postal-code" maxlength="5" name="shipping-postal-code" type="text" required>
+
+                <label for="shipping-city">Ville *</label>
+                <input id="shipping-city" autocomplete="address-level2" maxlength="45" name="shipping-city" type="text" required>
+
                 <p aria-live="polite">Veuillez saisir le champ "libellé de voie", ou le champ "lieu-dit ou boîte postale"</p>
-                <label for="additionalStreetNameaddressForm">Lieu-dit ou boîte postale *</label>
-                <input autocomplete="off" maxlength="38" name="additionalStreetNameaddressForm" type="text">
+
+                <label for="shipping-street">Numéro et libellé de voie *</label>
+                <input id="shipping-street" autocomplete="address-line1" maxlength="60" name="shipping-street" type="text">
+
+                <label for="shipping-additional-street">Lieu-dit ou boîte postale *</label>
+                <input id="shipping-additional-street" autocomplete="off" maxlength="38" name="shipping-additional-street" type="text">
+
+                <br><br>
+                <fieldset>
+                    <legend>Compléments d'adresse</legend>
+                    <label for="shipping-additional-building">Bâtiment, résidence</label>
+                    <input autocomplete="off" maxlength="38" name="shipping-additional-building" type="text">
+                    <label for="shipping-additional-floor">Appartement, chez, étage</label>
+                    <input autocomplete="off" maxlength="38" name="shipping-additional-floor" type="text">
+                </fieldset>
             </div>
+
+            <!-- ======== Address de facturation ======== -->
+
             <div>
                 <h3>Adresse de Facturation</h3>
-                <label style="font-size: 0.9em; color: var(--primary-blue);">
-                    <input id="same" type="checkbox" style="width:auto; display:inline;" checked> Identique à la livraison
+
+                <label class="shipping-billing-same-lbl">
+                    <input id="shipping-billing-same" type="checkbox" checked> Identique à la livraison
                 </label>
-                <div id="af">
+
+                <div id="address-facturation">
                     <div layout="horizontal">
                         <fieldset>
                             <legend>Civilité *</legend>
-                            <table><tbody>
-                            <tr>
-                                <td style="text-align: end; width: 40%;"><label for="sexaddressForm-FEMALE"><span>Madame</span></label></td>
-                                <td><input type="radio" name="facturation_sex" value="FEMALE" checked></td>
-                            </tr>
-                            <tr>
-                                <td style="text-align: end; width: 40%;"><label for="sexaddressForm-MALE"><span>Monsieur</span></label></td>
-                                <td><input type="radio" name="facturation_sex" value="MALE"></td>
-                            </tr>
-                            </tbody>
+                            <table>
+                                <tbody>
+                                    <tr>
+                                        <td class="civil-status-choice-lbl"><label for="billing-civil-status"><span>Madame</span></label></td>
+                                        <td><input type="radio" name="billing-civil-status" value="FEMALE" checked></td>
+                                    </tr>
+                                    <tr>
+                                        <td class="civil-status-choice-lbl"><label for="billing-civil-status"><span>Monsieur</span></label></td>
+                                        <td><input type="radio" name="billing-civil-status" value="MALE"></td>
+                                    </tr>
+                                </tbody>
                             </table>
                         </fieldset>
                     </div>
-                    <label for="firstName">Prénom *</label>
-                    <input autocomplete="given-name" maxlength="25" name="facturation_firstName" type="text" required>
-                    <label for="lastName">Nom *</label>
-                    <input autocomplete="family-name" maxlength="50" name="facturation_lastName" type="text" required>
-                    <label for="country-addressForm">Pays / Territoire *</label>
+
+                    <label for="billing-given-name">Prénom *</label>
+                    <input id="billing-given-name" autocomplete="given-name" maxlength="25" name="billing-given-name" id="billing-given-name" type="text" required>
+
+                    <label for="billing-family-name">Nom *</label>
+                    <input id="billing-family-name" autocomplete="family-name" maxlength="50" name="billing-family-name" id="billing-family-name" type="text" required>
+
+                    <label for="billing-country">Pays / Territoire *</label>
                     <br>
-                    <select name="facturation_country-addressForm" autocomplete="country-name" required>
-                        <option disabled="">-Sélectionner une option-</option>
+                    <select id="billing-country" name="billing-country" autocomplete="country-name" required>
+                        <option value="FR">France - Métropole</option>
+                        <option value="GP">France - Guadeloupe</option>
+                        <option value="GF">France - Guyane française</option>
+                        <option value="BL">France - Saint Barthélemy</option>
+                        <option value="MF">France - Saint Martin (partie française)</option>
+                        <option value="PM">France - Saint Pierre et Miquelon</option>
+                        <option value="MQ">France - Martinique</option>
+                        <option value="YT">France - Mayotte</option>
+                        <option value="RE">France - Réunion</option>
+                        <option value="TF">France - Terres australes françaises</option>
                         <option value="DE">Allemagne</option>
                         <option value="DE-BU">Allemagne - Busingen</option>
                         <option value="DE-HE">Allemagne - Helgoland</option>
-                        <option value="AD">Andorre</option>
+                        <option value="GB">Royaume-Uni</option>
                         <option value="BE">Belgique</option>
+                        <option value="AD">Andorre</option>
                         <option value="ES">Espagne</option>
                         <option value="ES-CE">Espagne - Ceuta</option>
                         <option value="ES-BA">Espagne - Iles Baléares</option>
                         <option value="ES-CA">Espagne - Îles Canaries</option>
                         <option value="ES-ME">Espagne - Melilla</option>
-                        <option value="FR">France - Métropole</option>
-                        <option value="GP">France - Guadeloupe</option>
-                        <option value="GF">France - Guyane française</option>
                         <option value="IE">Irlande</option>
                         <option value="IT">Italie</option>
                         <option value="IT-CI">Italie - Camppione d'Italia</option>
                         <option value="IT-LI">Italie - Livigno</option>
                         <option value="LU">Luxembourg</option>
-                        <option value="MQ">France - Martinique</option>
-                        <option value="YT">France - Mayotte</option>
                         <option value="MC">Monaco</option>
                         <option value="NL">Pays-Bas</option>
                         <option value="PT">Portugal</option>
-                        <option value="RE">France - Réunion</option>
-                        <option value="GB">Royaume-Uni</option>
-                        <option value="BL">France - Saint Barthélemy</option>
-                        <option value="MF">France - Saint Martin (partie française)</option>
-                        <option value="PM">France - Saint Pierre et Miquelon</option>
                         <option value="CH">Suisse</option>
-                        <option value="TF">France - Terres australes françaises</option>
                     </select>
                     <br>
-                    <label for="zipCode-addressForm">Code postal *</label>
-                    <input autocomplete="postal-code" maxlength="5" name="facturation_zipCode-addressForm" type="text" required>
-                    <label for="city-addressForm">Ville *</label>
-                    <input autocomplete="address-level2" maxlength="45" name="facturation_city-addressForm" type="text" required>
-                    <label for="streetName-addressForm">Numéro et libellé de voie *</label>
-                    <input autocomplete="address-line1" maxlength="60" name="facturation_streetName-addressForm" type="text">
+
+                    <label for="billing-postal-code">Code postal *</label>
+                    <input id="billing-postal-code" autocomplete="postal-code" maxlength="5" name="billing-postal-code" type="text" required>
+
+                    <label for="billing-city">Ville *</label>
+                    <input id="billing-city" autocomplete="address-level2" maxlength="45" name="billing-city" type="text" required>
+
                     <p aria-live="polite">Veuillez saisir le champ "libellé de voie", ou le champ "lieu-dit ou boîte postale"</p>
-                    <label for="additionalStreetNameaddressForm">Lieu-dit ou boîte postale *</label>
-                    <input autocomplete="off" maxlength="38" name="facturation_additionalStreetNameaddressForm" type="text">
+
+                    <label for="billing-street">Numéro et libellé de voie *</label>
+                    <input id="billing-street" autocomplete="address-line1" maxlength="60" name="billing-street" type="text">
+
+                    <label for="billing-additional-street">Lieu-dit ou boîte postale *</label>
+                    <input id="billing-additional-street" autocomplete="off" maxlength="38" name="billing-additional-street" type="text">
+
+                    <br><br>
+                    <fieldset>
+                        <legend>Compléments d'adresse</legend>
+                        <label for="billing-additional-building">Bâtiment, résidence</label>
+                        <input autocomplete="off" maxlength="38" name="billing-additional-building" type="text">
+                        <label for="billing-additional-floor">Appartement, chez, étage</label>
+                        <input autocomplete="off" maxlength="38" name="billing-additional-floor" type="text">
+                    </fieldset>
                 </div>
             </div>
         </div>
-        <button type="submit" class="btn" style="margin-top: 2rem; width: 100%;">Procéder au paiement</button>
+
+        <br><br><br><br>
+        <fieldset>
+            <legend>Informations pour le suivi du colis et de la commande</legend>
+            <label for="follow-phone">
+                <span>Numéro de téléphone avec indicateur pays</span>
+            </label>
+            <input autocomplete="tel" maxlength="20" name="follow-phone" type="tel" inputmode="decimal">
+            <p>Le format attendu doit comporter l'indicateur puis 9 chiffres. Exemple : +336 12 34 56 78</p>
+            <label for="follow-email">
+                <span>Email du destinataire</span>
+            </label>
+            <input autocomplete="email" maxlength="128" name="follow-email" type="text">
+            <p>Le format attendu doit être email@mail.com.</p>
+        </fieldset>
+
+        <button type="submit" class="btn checkout-form-submit-btn">Procéder au paiement</button>
     </form>
+
+    <!-- ======== Popup de confirmation de payement ======== -->
+
+    <div id="confirm-popup" class="popup">
+        <div class="popup-content">
+            <span id="confirm-popup-close-btn" class="popup-close-btn">&times;</span>
+
+            <h2>Résumé de votre commande</h2>
+
+            <div class="summary-addr-block">
+                <!-- Adresse de livraison -->
+                <div class="recap-box">
+                    <h3>Adresse de livraison</h3>
+                    <p id="summary-shipping-addr"></p>
+                </div>
+
+                <!-- Adresse de facturation -->
+                <div class="recap-box">
+                    <h3>Adresse de facturation</h3>
+                    <p id="summary-billing-addr"></p>
+                </div>
+            </div>
+
+            <!-- Produits commandés -->
+            <h3>Articles commandés</h3>
+            <table class="summary-products-block">
+                <thead>
+                    <tr>
+                        <th>Produit</th>
+                        <th>Prix Unitaire</th>
+                        <th>Quantité</th>
+                        <th>Total</th>
+                    </tr>
+                </thead>
+                <tbody id="summary-products-list"></tbody>
+            </table>
+
+            <!-- Récapitulatif des prix -->
+            <div class="summary-price-block">
+                <p>Sous-total : <span id="summary-subtotal-price"></span> €</p>
+                <p>Frais de port : <span id="summary-shipping-price"></span> €</p>
+                <h3 class="total-price-lbl">Total payé : <span id="summary-total-price"></span> €</h3>
+            </div>
+
+            <button id="pay-by-transfer-btn" type="button" class="btn summary-confirm-btn">Payer par virement direct</button>
+            <button id="pay-by-card-btn" type="button" class="btn summary-confirm-btn">Payer par carte bancaire</button>
+        </div>
+    </div>
 
     <script src="/JS/panier.js" defer></script>
 </main>

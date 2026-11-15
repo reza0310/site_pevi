@@ -2,6 +2,12 @@
 
 require_once __DIR__ . '/db.php';
 
+enum PaymentMethod
+{
+    case SystemPay;
+    case Transaction;
+}
+
 class OrderManager
 {
     private PDO $pdo;
@@ -9,6 +15,19 @@ class OrderManager
     public function __construct(Database $db)
     {
         $this->pdo = $db->get_pdo();
+    }
+
+    public static function order_id_to_string(int $product_id, PayementMethod $method): string {
+        $prefix = 'C' . strtoupper(dechex($product_id)) . 'C';
+        if ($method == PayementMethod::Transaction) {
+            return $prefix . "V";
+        } else {
+            return $prefix . "S";
+        }
+    }
+
+    public static function order_id_from_string(string $str): int {
+        return hexdec(substr($str, 1, strlen() - 2));
     }
 
     /**
@@ -33,16 +52,16 @@ class OrderManager
             $order_id = (int) $this->pdo->lastInsertId();
 
             // Insert each item into order_items
-            $sqlItem = "INSERT INTO order_items (order_id, product_id, quantity, unit_price_amount)
-                        VALUES (:order_id, :product_id, :quantity, :unit_price_amount)";
+            $sqlItem = "INSERT INTO order_items (order_id, product_id, quantity, unit_price)
+                        VALUES (:order_id, :product_id, :quantity, :unit_price)";
             $stmtItem = $this->pdo->prepare($sqlItem);
 
             foreach ($items as $item) {
                 $stmtItem->execute([
-                    'order_id'          => $order_id,
-                    'product_id'        => $item['product_id'],
-                    'quantity'          => $item['quantity'],
-                    'unit_price_amount' => $item['unit_price'],
+                    'order_id'   => $order_id,
+                    'product_id' => $item['product_id'],
+                    'quantity'   => $item['quantity'],
+                    'unit_price' => $item['unit_price'],
                 ]);
             }
 
@@ -129,7 +148,7 @@ class OrderManager
         }
 
         $sqlItems = "
-            SELECT oi.id AS item_id, oi.product_id, oi.quantity, oi.unit_price_amount, p.title
+            SELECT oi.id AS item_id, oi.product_id, oi.quantity, oi.unit_price, p.title
             FROM order_items oi
             JOIN products p ON p.id = oi.product_id
             WHERE oi.order_id = :order_id
