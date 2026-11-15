@@ -1,0 +1,5 @@
+# Secret and installation specific files
+config.*
+creds.*
+!config.template.*
+!creds.template.*
