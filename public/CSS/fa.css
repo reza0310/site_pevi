@@ -65,4 +65,7 @@
 
 .fa-xmark {
   --fa: "\f00d";
+
+.fa-paper {
+  --fa: "\f31c";
 }

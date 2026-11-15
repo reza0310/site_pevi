@@ -1,0 +1,30 @@
+<div class="product-card">
+    <h2 id="3770044154003_title" class="product-title">Elementalis</h2>
+    <a href="/produit/elementalis"><img id="3770044154003_pic" src="/" alt="Image de présentation" height="500"></a>
+    <p style="margin: 0.5em;">Prix : <strong id="3770044154003_price">15€ TTC</strong></p>
+    <br>
+    <a href="/produit/elementalis" class="btn" style="background-color: var(--secondary-blue); color: white;">Voir les détails</a>
+    <button class="btn" onclick="addToCart(3770044154003)">Ajouter au panier</button>
+</div>
+<script>
+    async function load3770044154003() {
+        try {
+            const response = await fetch("/DATA/3770044154003.json");
+            if (!response.ok) {
+                throw new Error(`HTTP error! Status: ${response.status}`);
+            }
+            const data = await response.json();
+
+            document.getElementById("3770044154003_title").innerHTML = data["name"];
+            document.getElementById("3770044154003_pic").src = "/IMAGES/" + data["main_pic"];
+            document.getElementById("3770044154003_price").innerHTML = data["price"] + "€";
+
+        } catch (error) {
+            // Handle any errors (e.g., network failure, bad URL)
+            console.error('Failed to load JSON:', error);
+        }
+    }
+
+    // Run the function when the script loads
+    load3770044154003();
+</script>
