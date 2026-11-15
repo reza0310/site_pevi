@@ -60,7 +60,7 @@
             document.getElementById("pic1").src = "/IMAGES/" + data["sub_pics"][0];
             document.getElementById("pic2").src = "/IMAGES/" + data["sub_pics"][1];
             document.getElementById("pic3").src = "/IMAGES/" + data["sub_pics"][2];
-            document.getElementById("prix").innerHTML = data["price"] + "€";
+            document.getElementById("prix").innerHTML = data["price"] / 100 + "€";
 
         } catch (error) {
             // Handle any errors (e.g., network failure, bad URL)
