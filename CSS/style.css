@@ -78,13 +78,6 @@ body {
     overflow-x: hidden;
 }
 
-/*
-img {
-    max-width: 100%;
-    height: auto;
-}
-*/
-
 h1 {
     color: var(--title-fg-color);
     font-family: var(--font-title);
@@ -97,13 +90,22 @@ h1, h2, h3 {
 
 a {
     text-decoration: none;
-    /* color: var(--primary-yellow); */
     color: inherit;
+    transition: 0.3s;
+}
+
+p a {
+    text-decoration: none;
+    color: var(--secondary-blue);
     transition: 0.3s;
 }
 
 a:hover {
     color: var(--secondary-blue);
+}
+
+p a:hover {
+    color: var(--primary-blue);
 }
 
 /* Vertical separator */
